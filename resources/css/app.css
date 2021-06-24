@@ -1,0 +1,69 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.ballot-box-option {
+    @apply relative flex-grow flex justify-between py-5 pl-12 pr-4 font-medium bg-gray-100 hover:bg-gray-200 rounded-md cursor-pointer transition;
+}
+
+.ballot-box-option-chad {
+    appearance: none;
+    border: none;
+    height: 1.5rem;
+    left: 1rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5rem;
+    z-index: 10;
+}
+
+.ballot-box-option-chad::before {
+    background: #9fa6b2;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 100%;
+    transition: background-color 0.15s ease-in-out;
+    width: 100%;
+}
+
+.ballot-box-option-chad:checked::before,
+.ballot-box-option:hover .ballot-box-option-chad::before {
+    background: #2f8132;
+}
+
+.ballot-box-option-name {
+    @apply relative z-10;
+}
+
+.ballot-box-option-results-container {
+    @apply relative z-10 whitespace-nowrap;
+}
+
+.ballot-box-option-results-numeric {
+    @apply hidden sm:inline-block ml-4;
+}
+
+.ballot-box-option-results-percentage {
+    @apply inline-block ml-2;
+}
+
+.ballot-box-option-results-bar {
+    background: #a3d9a5;
+    border-radius: 0.375rem;
+    height: 100%;
+    left: 0;
+    max-width: 0;
+    position: absolute;
+    top: 0;
+    transition: max-width 0.5s linear;
+    width: 100%;
+    z-index: 0;
+}
+
+.ballot-box-hidden-results .ballot-box-option-results-container,
+.ballot-box-hidden-results .ballot-box-option-results-bar {
+    display: none;
+}
