@@ -7,14 +7,15 @@
                 </template>
 
                 <template v-slot:default>
-                    <h1 class="text-2xl font-bold leading-7 sm:text-3xl">What is your favorite color?</h1>
-                    <p class="mt-2 text-sm text-gray-500">Posted by <inertia-link class="hover:text-gray-600 hover:underline transition" href="/members/michael">Michael</inertia-link> <time>6 months ago</time>.</p>
+                    <page-title>What is your favorite color?</page-title>
+                    <byline class="mt-2" member="Michael" member-url="/members/michael" time="01-01-2021" time-for-humans="6 months ago" />
+
                     <ul class="mt-2">
                         <li class="inline-block">
-                            <inertia-link class="text-sm font-medium text-indigo-600 hover:text-indigo-700 hover:underline" href="">Edit</inertia-link>
+                            <tertiary-button element="inertia-link" href="/polls/edit">Edit</tertiary-button>
                         </li>
-                        <li class="inline-block ml-3">
-                            <inertia-link class="text-sm font-medium text-indigo-600 hover:text-indigo-700 hover:underline" href="">Delete</inertia-link>
+                        <li class="ml-3 inline-block">
+                            <tertiary-button type="button">Delete</tertiary-button>
                         </li>
                     </ul>
                 </template>
@@ -22,67 +23,43 @@
         </template>
 
         <template v-slot:default>
-            <form class="ballot-box-hidden-results">
-                <fieldset>
-                    <legend class="sr-only">What is your favorite color?</legend>
-
-                    <div class="relative flex items-center">
-                        <label class="ballot-box-option" for="">
-                            <input class="ballot-box-option-chad" id="" name="" type="radio" value="" required>
-                            <span class="ballot-box-option-name">Red</span>
-                            <span class="ballot-box-option-results-container">
-                                <span class="ballot-box-option-results-numeric">1 vote</span>
-                                <span class="ballot-box-option-results-percentage">25%</span>
-                            </span>
-                            <span class="ballot-box-option-results-bar" style="background: #cfbcf2; max-width: 25%;" aria-hidden="true"></span>
-                        </label>
-                    </div>
-                    <div class="mt-2 relative flex items-center">
-                        <label class="ballot-box-option" for="">
-                            <input class="ballot-box-option-chad" id="" name="" type="radio" value="" required>
-                            <span class="ballot-box-option-name">Red</span>
-                            <span class="ballot-box-option-results-container">
-                                <span class="ballot-box-option-results-numeric">1 vote</span>
-                                <span class="ballot-box-option-results-percentage">25%</span>
-                            </span>
-                            <span class="ballot-box-option-results-bar" style="background: #cfbcf2; max-width: 25%;" aria-hidden="true"></span>
-                        </label>
-                    </div>
-                    <div class="mt-2 relative flex items-center">
-                        <label class="ballot-box-option" for="">
-                            <input class="ballot-box-option-chad" id="" name="" type="radio" value="" required>
-                            <span class="ballot-box-option-name">Red</span>
-                            <span class="ballot-box-option-results-container">
-                                <span class="ballot-box-option-results-numeric">1 vote</span>
-                                <span class="ballot-box-option-results-percentage">25%</span>
-                            </span>
-                            <span class="ballot-box-option-results-bar" style="background: #cfbcf2; max-width: 25%;" aria-hidden="true"></span>
-                        </label>
-                    </div>
-                    <div class="mt-2 relative flex items-center">
-                        <label class="ballot-box-option" for="">
-                            <input class="ballot-box-option-chad" id="" name="" type="radio" value="" required>
-                            <span class="ballot-box-option-name">Red</span>
-                            <span class="ballot-box-option-results-container">
-                                <span class="ballot-box-option-results-numeric">1 vote</span>
-                                <span class="ballot-box-option-results-percentage">25%</span>
-                            </span>
-                            <span class="ballot-box-option-results-bar" style="background: #cfbcf2; max-width: 25%;" aria-hidden="true"></span>
-                        </label>
-                    </div>
-                    <div class="mt-2 relative flex items-center">
-                        <label class="ballot-box-option" for="">
-                            <input class="ballot-box-option-chad" id="" name="" type="radio" value="" required>
-                            <span class="ballot-box-option-name">Red</span>
-                            <span class="ballot-box-option-results-container">
-                                <span class="ballot-box-option-results-numeric">1 vote</span>
-                                <span class="ballot-box-option-results-percentage">25%</span>
-                            </span>
-                            <span class="ballot-box-option-results-bar" style="background: #cfbcf2; max-width: 25%;" aria-hidden="true"></span>
-                        </label>
-                    </div>
-                </fieldset>
-            </form>
+            <ballot-box title="What is your favorite color?" :options="[
+                {
+                    id: 0,
+                    name: 'Red',
+                    color: '#a3d9a5',
+                    votesCount: '20 votes',
+                    votesPercentage: '20%',
+                },
+                {
+                    id: 1,
+                    name: 'Blue',
+                    color: '#cfbcf2',
+                    votesCount: '40 votes',
+                    votesPercentage: '40%',
+                },
+                {
+                    id: 2,
+                    name: 'Green',
+                    color: '#f9da8b',
+                    votesCount: '15 votes',
+                    votesPercentage: '15%',
+                },
+                {
+                    id: 3,
+                    name: 'Purple',
+                    color: '#a4cafe',
+                    votesCount: '15 votes',
+                    votesPercentage: '15%',
+                },
+                {
+                    id: 4,
+                    name: 'Yellow',
+                    color: '#f8b4d9',
+                    votesCount: '10 votes',
+                    votesPercentage: '10%',
+                },
+            ]"></ballot-box>
         </template>
 
         <template v-slot:footer>
@@ -90,26 +67,29 @@
                 <dl>
                     <dt class="sr-only">Category</dt>
                     <dd class="inline-block">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">Random</span>
+                        <badge color="indigo">Random</badge>
                     </dd>
                 </dl>
+
                 <dl class="ml-auto flex">
                     <dt class="sr-only">Votes</dt>
-                    <dd class="inline-flex items-center text-sm font-medium text-gray-500" title="22 votes">
-                        <svg class="mr-1 h-5 w-5" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <dd class="inline-flex items-center text-gray-500" title="22 votes">
+                        <svg class="mr-1" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
                         </svg>
-                        <button class="hover:text-gray-600 hover:underline" type="button" aria-label="View voters">22</button>
+                        <button class="text-sm font-medium hover:text-gray-600 hover:underline" type="button" aria-label="View voters">22</button>
                     </dd>
+
                     <dt class="sr-only">Comments</dt>
-                    <dd class="ml-3 inline-flex items-center text-sm font-medium text-gray-500" title="6 comments">
-                        <svg class="mr-1 h-5 w-5" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <dd class="ml-3 inline-flex items-center text-gray-500" title="6 comments">
+                        <svg class="mr-1" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
                         </svg>
-                        <a class="hover:text-gray-600 hover:underline" href="#comments" aria-label="Go to comments">6</a>
+                        <a class="text-sm font-medium hover:text-gray-600 hover:underline" href="#comments" aria-label="Go to comments">6</a>
                     </dd>
+
                     <dt class="sr-only">Hearts</dt>
-                    <dd class="ml-3 inline-flex items-center text-sm font-medium text-gray-500">
+                    <dd class="ml-3 inline-flex items-center text-gray-500">
                         <form class="mr-1 h-5 w-5">
                             <button class="hover:text-rose-600 transition" type="submit" title="Heart This Poll">
                                 <svg class="h-5 w-5" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -118,9 +98,10 @@
                                 <span class="sr-only">Heart This Poll</span>
                             </button>
                         </form>
-                        <span title="8 hearts">8</span>
+                        <button class="text-sm font-medium hover:text-gray-600 hover:underline" type="button" aria-label="View hearts">8</button>
                     </dd>
                 </dl>
+
                 <form class="ml-3 inline-flex items-center">
                     <button class="text-sm font-medium text-gray-500 hover:text-gray-600 hover:underline" type="submit" title="Withdraw Your Vote">Withdraw</button>
                 </form>
@@ -129,18 +110,23 @@
     </panel>
 
     <section class="mt-12" id="comments">
-        <h2 class="text-xl font-bold leading-7 sm:text-2xl">Comments</h2>
+        <h2 class="text-xl sm:text-2xl font-bold leading-7">Comments</h2>
 
         <form class="mt-4">
-            <label class="sr-only" for="comment">Comment</label>
-            <textarea class="shadow-sm block w-full border-gray-300 rounded-md transition" id="comment" name="body" placeholder="Leave a comment here..." rows="5"></textarea>
+            <form-textarea label="Comment" id="comment" name="body" placeholder="Leave a comment here..." has-hidden-label required />
+
             <div class="flex justify-end mt-4">
-                <button class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition" type="submit">
-                    <svg class="-ml-1 mr-2 h-5 w-5" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                    </svg>
-                    Post Comment
-                </button>
+                <primary-button type="submit">
+                    <template v-slot:icon>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                    </template>
+
+                    <template v-slot:default>
+                        Post Comment
+                    </template>
+                </primary-button>
             </div>
         </form>
 
@@ -169,6 +155,7 @@
                                     </svg>
                                     Michael
                                 </dd>
+
                                 <dt class="sr-only">Time</dt>
                                 <dd class="ml-3 inline-flex items-center text-sm font-medium text-gray-500">
                                     <svg class="mr-1 h-5 w-5" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -177,6 +164,7 @@
                                     <time>6 months ago</time>
                                 </dd>
                             </dl>
+
                             <dl class="ml-auto flex">
                                 <dt class="sr-only">Replies</dt>
                                 <dd class="ml-3 inline-flex items-center text-sm font-medium text-gray-500" title="6 comments">
@@ -185,6 +173,7 @@
                                     </svg>
                                     1
                                 </dd>
+
                                 <dt class="sr-only">Hearts</dt>
                                 <dd class="ml-3 inline-flex items-center text-sm font-medium text-gray-500" title="8 hearts">
                                     <form class="mr-1 h-5 w-5">
@@ -198,6 +187,7 @@
                                     <span title="2 hearts">2</span>
                                 </dd>
                             </dl>
+
                             <button class="ml-3 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-600 hover:underline" type="button">Reply</button>
                         </div>
                     </template>
@@ -353,16 +343,30 @@
 
 <script>
     import Avatar from '@/Shared/Avatar'
+    import Badge from '@/Shared/Badge'
+    import BallotBox from '@/Shared/BallotBox'
+    import Byline from '@/Shared/Byline'
+    import FormTextarea from '@/Shared/FormTextarea'
     import MediaObject from '@/Shared/MediaObject'
+    import PageTitle from '@/Shared/PageTitle'
     import Panel from '@/Shared/Panel'
+    import PrimaryButton from '@/Shared/PrimaryButton'
     import RoundedImage from '@/Shared/RoundedImage'
+    import TertiaryButton from '@/Shared/TertiaryButton'
 
     export default {
         components: {
             Avatar,
+            Badge,
+            BallotBox,
+            Byline,
+            FormTextarea,
             MediaObject,
+            PageTitle,
             Panel,
+            PrimaryButton,
             RoundedImage,
+            TertiaryButton,
         },
     }
 </script>

@@ -1,83 +1,34 @@
 <template>
     <panel element="section">
-        <h1 class="text-2xl font-bold leading-7 sm:text-3xl">Create a Poll</h1>
+        <page-title>Create a Poll</page-title>
 
         <form class="mt-6">
-            <div>
-                <div class="flex justify-between">
-                    <label class="block font-medium text-gray-700" for="title">Title</label>
-                </div>
-                <div class="mt-1">
-                    <input class="shadow-sm block w-full border-gray-300 rounded-md transition" id="title" name="title" type="text">
-                </div>
-            </div>
+            <form-input id="title" name="title" label="Title" required />
 
             <fieldset class="mt-8">
                 <legend class="block font-medium text-gray-700">Options</legend>
 
-                <div>
-                    <label class="sr-only" for="option0">Option 1</label>
-                    <div class="mt-3">
-                        <input class="shadow-sm block w-full border-gray-300 rounded-md transition" id="option0" name="options[0]" type="text" placeholder="Option 1">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="sr-only" for="option0">Option 2</label>
-                    <div class="mt-3">
-                        <input class="shadow-sm block w-full border-gray-300 rounded-md transition" id="option1" name="options[1]" type="text" placeholder="Option 2">
-                    </div>
-                </div>
-
-                <div style="display: none;">
-                    <label class="sr-only" for="option0">Option 3</label>
-                    <div class="mt-3">
-                        <input class="shadow-sm block w-full border-gray-300 rounded-md transition" id="option2" name="options[2]" type="text" placeholder="Option 3">
-                    </div>
-                </div>
-
-                <div style="display: none;">
-                    <label class="sr-only" for="option0">Option 4</label>
-                    <div class="mt-3">
-                        <input class="shadow-sm block w-full border-gray-300 rounded-md transition" id="option3" name="options[3]" type="text" placeholder="Option 4">
-                    </div>
-                </div>
-
-                <div style="display: none;">
-                    <label class="sr-only" for="option0">Option 5</label>
-                    <div class="mt-3">
-                        <input class="shadow-sm block w-full border-gray-300 rounded-md transition" id="option4" name="options[4]" type="text" placeholder="Option 5">
-                    </div>
-                </div>
-
-                <div style="display: none;">
-                    <label class="sr-only" for="option0">Option 6</label>
-                    <div class="mt-3">
-                        <input class="shadow-sm block w-full border-gray-300 rounded-md transition" id="option5" name="options[5]" type="text" placeholder="Option 6">
-                    </div>
-                </div>
-
-                <div style="display: none;">
-                    <label class="sr-only" for="option0">Option 7</label>
-                    <div class="mt-3">
-                        <input class="shadow-sm block w-full border-gray-300 rounded-md transition" id="option6" name="options[6]" type="text" placeholder="Option 7">
-                    </div>
-                </div>
-
-                <div style="display: none;">
-                    <label class="sr-only" for="option0">Option 8</label>
-                    <div class="mt-3">
-                        <input class="shadow-sm block w-full border-gray-300 rounded-md transition" id="option7" name="options[7]" type="text" placeholder="Option 8">
-                    </div>
-                </div>
+                <form-input class="mt-3" id="option0" name="options[0]" label="Option 1" placeholder="Option 1" has-hidden-label required />
+                <form-input class="mt-3" id="option1" name="options[1]" label="Option 2" placeholder="Option 2" has-hidden-label required />
+                <form-input class="mt-3" id="option2" name="options[2]" label="Option 3" placeholder="Option 3" has-hidden-label />
+                <form-input class="mt-3" id="option3" name="options[3]" label="Option 4" placeholder="Option 4" has-hidden-label />
+                <form-input class="mt-3" id="option4" name="options[4]" label="Option 5" placeholder="Option 5" has-hidden-label />
+                <form-input class="mt-3" id="option5" name="options[5]" label="Option 6" placeholder="Option 6" has-hidden-label />
+                <form-input class="mt-3" id="option6" name="options[6]" label="Option 7" placeholder="Option 7" has-hidden-label />
+                <form-input class="mt-3" id="option7" name="options[7]" label="Option 8" placeholder="Option 8" has-hidden-label />
 
                 <div class="flex justify-end mt-3">
-                    <button class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 transition" type="button">
-                        <svg class="-ml-1 mr-2 h-5 w-5" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
-                        </svg>
-                        Add Option
-                    </button>
+                    <secondary-button type="button">
+                        <template v-slot:icon>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                            </svg>
+                        </template>
+
+                        <template v-slot:default>
+                            Add Option
+                        </template>
+                    </secondary-button>
                 </div>
             </fieldset>
 
@@ -105,34 +56,52 @@
                 </div>
                 <div class="mt-2">
                     <input class="hidden" id="image" name="image" type="file" accept="image/*">
-                    <button class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 transition" type="button">
-                        <svg class="-ml-1 mr-2 h-5 w-5" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
-                        </svg>
-                        Upload Image
-                    </button>
+                    <secondary-button type="button">
+                        <template v-slot:icon>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+                            </svg>
+                        </template>
+
+                        <template v-slot:default>
+                            Upload Image
+                        </template>
+                    </secondary-button>
                 </div>
                 <p class="mt-2 text-sm text-gray-500" id="image-description">This image will appear next to your poll's title.</p>
             </div>
 
             <div class="flex justify-end mt-8">
-                <button class="inline-flex items-center px-6 py-3 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition" type="submit">
-                    <svg class="-ml-1 mr-3 h-5 w-5" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                    </svg>
-                    Create Poll
-                </button>
+                <primary-button type="submit" is-large>
+                    <template v-slot:icon>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                    </template>
+
+                    <template v-slot:default>
+                        Create Poll
+                    </template>
+                </primary-button>
             </div>
         </form>
     </panel>
 </template>
 
 <script>
+    import FormInput from '@/Shared/FormInput'
+    import PageTitle from '@/Shared/PageTitle'
     import Panel from '@/Shared/Panel'
+    import PrimaryButton from '@/Shared/PrimaryButton'
+    import SecondaryButton from '@/Shared/SecondaryButton'
 
     export default {
         components: {
+            FormInput,
+            PageTitle,
             Panel,
+            PrimaryButton,
+            SecondaryButton,
         },
     }
 </script>
