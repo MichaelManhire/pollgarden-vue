@@ -2,13 +2,13 @@
     <panel element="section">
         <page-title>Create a Poll</page-title>
 
-        <form class="mt-6">
+        <form class="mt-6" enctype="multipart/form-data">
             <form-input id="title" name="title" label="Title" required />
 
             <fieldset class="mt-8">
                 <legend class="block font-medium text-gray-700">Options</legend>
 
-                <form-input class="mt-3" id="option0" name="options[0]" label="Option 1" placeholder="Option 1" has-hidden-label required />
+                <form-input class="mt-2" id="option0" name="options[0]" label="Option 1" placeholder="Option 1" has-hidden-label required />
                 <form-input class="mt-3" id="option1" name="options[1]" label="Option 2" placeholder="Option 2" has-hidden-label required />
                 <form-input class="mt-3" id="option2" name="options[2]" label="Option 3" placeholder="Option 3" has-hidden-label />
                 <form-input class="mt-3" id="option3" name="options[3]" label="Option 4" placeholder="Option 4" has-hidden-label />
@@ -32,44 +32,38 @@
                 </div>
             </fieldset>
 
-            <div class="mt-8">
-                <div class="flex justify-between">
-                    <label class="block font-medium text-gray-700" for="category">Category</label>
-                </div>
-                <div class="mt-1">
-                    <select class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 rounded-md" id="category" name="category">
-                        <option>Random</option>
-                        <option>Entertainment</option>
-                        <option>Food</option>
-                        <option>Life Experiences</option>
-                        <option>Politics</option>
-                        <option>Relationships</option>
-                        <option>Science & Tech</option>
-                    </select>
-                </div>
-            </div>
+            <form-select class="mt-8" id="category" name="category_id" label="Category" required :options="[
+                {
+                    name: 'Random',
+                    value: '0',
+                },
+                {
+                    name: 'Entertainment',
+                    value: '1',
+                },
+                {
+                    name: 'Food',
+                    value: '2',
+                },
+                {
+                    name: 'Life Experiences',
+                    value: '3',
+                },
+                {
+                    name: 'Politics',
+                    value: '4',
+                },
+                {
+                    name: 'Relationships',
+                    value: '5',
+                },
+                {
+                    name: 'Science & Tech',
+                    value: '6',
+                },
+            ]" />
 
-            <div class="mt-8">
-                <div class="flex justify-between">
-                    <label class="block font-medium text-gray-700" for="image">Image</label>
-                    <span class="text-sm text-gray-500" id="image-optional">Optional</span>
-                </div>
-                <div class="mt-2">
-                    <input class="hidden" id="image" name="image" type="file" accept="image/*">
-                    <secondary-button type="button">
-                        <template v-slot:icon>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
-                            </svg>
-                        </template>
-
-                        <template v-slot:default>
-                            Upload Image
-                        </template>
-                    </secondary-button>
-                </div>
-                <p class="mt-2 text-sm text-gray-500" id="image-description">This image will appear next to your poll's title.</p>
-            </div>
+            <form-uploader class="mt-8" id="image" name="image" label="Image" />
 
             <div class="flex justify-end mt-8">
                 <primary-button type="submit" is-large>
@@ -90,6 +84,8 @@
 
 <script>
     import FormInput from '@/Shared/FormInput'
+    import FormSelect from '@/Shared/FormSelect'
+    import FormUploader from '@/Shared/FormUploader'
     import PageTitle from '@/Shared/PageTitle'
     import Panel from '@/Shared/Panel'
     import PrimaryButton from '@/Shared/PrimaryButton'
@@ -98,6 +94,8 @@
     export default {
         components: {
             FormInput,
+            FormSelect,
+            FormUploader,
             PageTitle,
             Panel,
             PrimaryButton,

@@ -1,10 +1,12 @@
 <template>
     <div>
-        <div>
+        <div class="flex justify-between">
             <label class="mb-2 block font-medium text-gray-700" :class="{ 'sr-only': hasHiddenLabel }" :for="id">{{ label }}</label>
         </div>
         <div>
-            <textarea class="shadow-sm block w-full border-gray-300 rounded-md transition" :id="id" :name="name" :placeholder="placeholder" :required="required" rows="5"></textarea>
+            <select class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 rounded-md" :id="id" :name="name" :required="required">
+                <option v-for="option in options" :value="option.value" :key="option.value">{{ option.name }}</option>
+            </select>
         </div>
     </div>
 </template>
@@ -28,13 +30,14 @@
                 type: String,
                 required: true,
             },
-            placeholder: {
-                type: String,
+            options: {
+                type: Array,
+                required: true,
             },
             required: {
                 type: Boolean,
                 default: false,
             },
-        }
+        },
     }
 </script>
