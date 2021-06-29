@@ -1,5 +1,5 @@
 <template>
-    <panel element="li">
+    <panel element="li" class="hover:bg-gray-50 transition cursor-pointer" @click="goToPoll">
         <div class="flex">
             <div class="flex-shrink-0">
                 <rounded-image />
@@ -107,6 +107,17 @@
             votesCount: {
                 type: Number,
                 required: true,
+            },
+        },
+
+        methods: {
+            goToPoll(event) {
+                const href = this.href;
+                const tag = event.target.tagName.toLowerCase();
+
+                if (tag !== 'a') {
+                    window.location.href = href;
+                }
             },
         },
     }

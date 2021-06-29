@@ -3,19 +3,20 @@
         <page-title>Create a Poll</page-title>
 
         <form class="mt-6" enctype="multipart/form-data">
-            <form-input id="title" name="title" label="Title" required />
+            <form-label for="title">Title</form-label>
+            <form-input id="title" name="title" type="text" required autofocus />
 
             <fieldset class="mt-8">
                 <legend class="block font-medium text-gray-700">Options</legend>
 
-                <form-input class="mt-2" id="option0" name="options[0]" label="Option 1" placeholder="Option 1" has-hidden-label required />
-                <form-input class="mt-3" id="option1" name="options[1]" label="Option 2" placeholder="Option 2" has-hidden-label required />
-                <form-input class="mt-3" id="option2" name="options[2]" label="Option 3" placeholder="Option 3" has-hidden-label />
-                <form-input class="mt-3" id="option3" name="options[3]" label="Option 4" placeholder="Option 4" has-hidden-label />
-                <form-input class="mt-3" id="option4" name="options[4]" label="Option 5" placeholder="Option 5" has-hidden-label />
-                <form-input class="mt-3" id="option5" name="options[5]" label="Option 6" placeholder="Option 6" has-hidden-label />
-                <form-input class="mt-3" id="option6" name="options[6]" label="Option 7" placeholder="Option 7" has-hidden-label />
-                <form-input class="mt-3" id="option7" name="options[7]" label="Option 8" placeholder="Option 8" has-hidden-label />
+                <form-input class="mt-2" id="option0" name="options[0]" type="text" label="Option 1" placeholder="Option 1" has-hidden-label required />
+                <form-input class="mt-3" id="option1" name="options[1]" type="text" label="Option 2" placeholder="Option 2" has-hidden-label required />
+                <form-input class="mt-3" id="option2" name="options[2]" type="text" label="Option 3" placeholder="Option 3" has-hidden-label />
+                <form-input class="mt-3" id="option3" name="options[3]" type="text" label="Option 4" placeholder="Option 4" has-hidden-label />
+                <form-input class="mt-3" id="option4" name="options[4]" type="text" label="Option 5" placeholder="Option 5" has-hidden-label />
+                <form-input class="mt-3" id="option5" name="options[5]" type="text" label="Option 6" placeholder="Option 6" has-hidden-label />
+                <form-input class="mt-3" id="option6" name="options[6]" type="text" label="Option 7" placeholder="Option 7" has-hidden-label />
+                <form-input class="mt-3" id="option7" name="options[7]" type="text" label="Option 8" placeholder="Option 8" has-hidden-label />
 
                 <div class="flex justify-end mt-3">
                     <secondary-button type="button">
@@ -32,6 +33,7 @@
                 </div>
             </fieldset>
 
+            <form-label for="category_id">Category</form-label>
             <form-select class="mt-8" id="category" name="category_id" label="Category" required :options="[
                 {
                     name: 'Random',
@@ -63,7 +65,10 @@
                 },
             ]" />
 
-            <form-uploader class="mt-8" id="image" name="image" label="Image" />
+            <div class="mt-8">
+                <form-label for="image">Image</form-label>
+                <form-uploader id="image" name="image" />
+            </div>
 
             <div class="flex justify-end mt-8">
                 <primary-button type="submit" is-large>
@@ -84,6 +89,7 @@
 
 <script>
     import FormInput from '@/Shared/FormInput'
+    import FormLabel from '@/Shared/FormLabel'
     import FormSelect from '@/Shared/FormSelect'
     import FormUploader from '@/Shared/FormUploader'
     import PageTitle from '@/Shared/PageTitle'
@@ -94,6 +100,7 @@
     export default {
         components: {
             FormInput,
+            FormLabel,
             FormSelect,
             FormUploader,
             PageTitle,

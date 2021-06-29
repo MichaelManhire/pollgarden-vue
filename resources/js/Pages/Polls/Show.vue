@@ -1,5 +1,5 @@
 <template>
-    <panel element="section" :has-header="true" :has-footer="true">
+    <panel element="section" has-header has-footer>
         <template v-slot:header>
             <media-object>
                 <template v-slot:media>
@@ -113,7 +113,8 @@
         <h2 class="text-xl sm:text-2xl font-bold leading-7">Comments</h2>
 
         <form class="mt-4">
-            <form-textarea label="Comment" id="comment" name="body" placeholder="Leave a comment here..." has-hidden-label required />
+            <form-label class="sr-only">Comment</form-label>
+            <form-textarea id="comment" name="body" placeholder="Leave a comment here..." required />
 
             <div class="flex justify-end mt-4">
                 <primary-button type="submit">
@@ -132,7 +133,7 @@
 
         <ol class="mt-6">
             <li>
-                <panel :has-footer="true">
+                <panel has-footer>
                     <template v-slot:default>
                         <media-object>
                             <template v-slot:media>
@@ -346,6 +347,7 @@
     import Badge from '@/Shared/Badge'
     import BallotBox from '@/Shared/BallotBox'
     import Byline from '@/Shared/Byline'
+    import FormLabel from '@/Shared/FormLabel'
     import FormTextarea from '@/Shared/FormTextarea'
     import MediaObject from '@/Shared/MediaObject'
     import PageTitle from '@/Shared/PageTitle'
@@ -360,6 +362,7 @@
             Badge,
             BallotBox,
             Byline,
+            FormLabel,
             FormTextarea,
             MediaObject,
             PageTitle,

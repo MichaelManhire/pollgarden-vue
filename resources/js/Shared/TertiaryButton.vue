@@ -1,5 +1,5 @@
 <template>
-    <component :is="element" class="text-sm font-medium text-indigo-600 hover:text-indigo-700 hover:underline" :href="href" :type="type">
+    <component :is="element" class="text-sm font-medium text-indigo-600 hover:text-indigo-700 hover:underline">
         <slot />
     </component>
 </template>
@@ -10,12 +10,6 @@
             element: {
                 type: String,
                 default: 'button',
-            },
-            href: {
-                type: String,
-            },
-            type: {
-                type: String,
             },
         }
     }

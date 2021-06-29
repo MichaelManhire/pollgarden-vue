@@ -1,9 +1,6 @@
 <template>
     <div>
         <div>
-            <label class="mb-1 block font-medium text-gray-700" :class="{ 'sr-only': hasHiddenLabel }" :for="id">{{ label }}</label>
-        </div>
-        <div>
             <input class="hidden" :id="id" :name="name" type="file" :required="required" accept="image/*" :aria-describedby="id + '-description'">
 
             <secondary-button type="button">
