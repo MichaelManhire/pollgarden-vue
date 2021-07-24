@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Poll;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class PollSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class PollSeeder extends Seeder
      */
     public function run()
     {
-        Poll::factory()->count(100)->hasOptions(3)->hasComments(5)->create();
+        User::factory()->count(20)->create();
     }
 }

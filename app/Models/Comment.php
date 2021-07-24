@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Poll extends Model
+class Comment extends Model
 {
     use HasFactory;
 
     /**
-     * Get the author of this poll.
+     * Get the author of this comment.
      */
     public function author()
     {
@@ -18,26 +18,18 @@ class Poll extends Model
     }
 
     /**
-     * Get this poll's category.
+     * Get the parent commentable model (poll or comment).
      */
-    public function category()
+    public function commentable()
     {
-        return $this->belongsTo(Category::class);
+        return $this->morphTo();
     }
 
     /**
-     * Get the comments that this poll has.
+     * Get the replies that this comment has.
      */
-    public function comments()
+    public function replies()
     {
         return $this->morphMany(Comment::class, 'commentable');
-    }
-
-    /**
-     * Get this poll's options.
-     */
-    public function options()
-    {
-        return $this->hasMany(Option::class);
     }
 }
