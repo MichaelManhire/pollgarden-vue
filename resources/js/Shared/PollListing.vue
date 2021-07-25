@@ -1,5 +1,5 @@
 <template>
-    <panel element="li" class="hover:bg-gray-50 transition cursor-pointer" @click="goToPoll">
+    <panel element="li" class="mt-6 hover:bg-gray-50 transition cursor-pointer" @click="goToPoll">
         <div class="flex">
             <div class="flex-shrink-0">
                 <rounded-image />
@@ -7,18 +7,19 @@
             <div class="flex-1 pl-4 md:grid md:grid-cols-2 md:gap-4">
                 <div>
                     <h2>
-                        <inertia-link class="text-lg font-medium text-indigo-600 hover:text-indigo-700 hover:underline" :href="href">
+                        <inertia-link class="text-lg font-medium text-indigo-600 hover:text-indigo-700 hover:underline"
+                                      :href="route('polls.show', slug)">
                             {{ title }}
                         </inertia-link>
                     </h2>
-                    <byline class="mt-2" :member="member" :member-url="memberUrl" :time="time" :time-for-humans="timeForHumans" />
+                    <byline class="mt-2" :author="author" :time="time" :time-for-humans="timeForHumans" />
                 </div>
 
                 <div class="flex md:inline-block items-center md:items-start mt-3 md:mt-0">
                     <dl>
                         <dt class="sr-only">Category</dt>
                         <dd>
-                            <badge color="indigo">{{ category }}</badge>
+                            <badge :color="categoryColor">{{ category }}</badge>
                         </dd>
                     </dl>
 
@@ -68,7 +69,15 @@
         },
 
         props: {
+            author: {
+                type: String,
+                required: true,
+            },
             category: {
+                type: String,
+                required: true,
+            },
+            categoryColor: {
                 type: String,
                 required: true,
             },
@@ -80,15 +89,7 @@
                 type: Number,
                 required: true,
             },
-            href: {
-                type: String,
-                required: true,
-            },
-            member: {
-                type: String,
-                required: true,
-            },
-            memberUrl: {
+            slug: {
                 type: String,
                 required: true,
             },

@@ -54,16 +54,18 @@
 
     <section class="mt-8">
         <ol>
-            <poll-listing title="What is your favorite color?"
-                          :href="route('polls.show')"
-                          member="Michael"
-                          memberUrl="/users/michael"
-                          time="01-01-2021"
-                          timeForHumans="6 months ago"
-                          category="Random"
-                          :votesCount="24"
-                          :commentsCount="10"
-                          :heartsCount="55" />
+            <poll-listing v-for="poll in polls.data"
+                          :key="poll.id"
+                          :slug="poll.slug"
+                          :title="poll.title"
+                          :time="poll.time"
+                          :timeForHumans="poll.timeForHumans"
+                          :author="poll.author"
+                          :category="poll.category"
+                          :categoryColor="poll.categoryColor"
+                          :votesCount="poll.votesCount"
+                          :commentsCount="poll.commentsCount"
+                          :heartsCount="poll.heartsCount" />
         </ol>
     </section>
 </template>
@@ -81,5 +83,12 @@
             PageTitle,
             PrimaryButton,
         },
+
+        props: {
+            polls: {
+                type: Object,
+                required: true,
+            },
+        }
     }
 </script>

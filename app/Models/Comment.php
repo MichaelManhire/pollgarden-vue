@@ -26,6 +26,14 @@ class Comment extends Model
     }
 
     /**
+     * Get the hearts that this comment has.
+     */
+    public function hearts()
+    {
+        return $this->morphMany(Heart::class, 'heartable');
+    }
+
+    /**
      * Get the replies that this comment has.
      */
     public function replies()

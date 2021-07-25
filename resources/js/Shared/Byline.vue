@@ -1,17 +1,13 @@
 <template>
     <p class="text-sm text-gray-500">
-        Posted by <inertia-link class="hover:text-gray-600 hover:underline" :href="memberUrl">{{ member }}</inertia-link> <time :title="time">{{ timeForHumans }}</time>.
+        Posted by <inertia-link class="hover:text-gray-600 hover:underline" href="">{{ author }}</inertia-link> <time :title="time">{{ timeForHumans }}</time>.
     </p>
 </template>
 
 <script>
     export default {
         props: {
-            member: {
-                type: String,
-                required: true,
-            },
-            memberUrl: {
+            author: {
                 type: String,
                 required: true,
             },

@@ -21,6 +21,6 @@ Route::get('/', function () {
 
 Route::get('/polls/create', [PollController::class, 'create'])->name('polls.create');
 Route::get('/polls', [PollController::class, 'index'])->name('polls.index');
-Route::get('/polls/show', [PollController::class, 'show'])->name('polls.show');
+Route::get('/polls/show/{poll}', [PollController::class, 'show'])->name('polls.show');
 
 require __DIR__.'/auth.php';

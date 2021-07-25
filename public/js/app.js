@@ -18155,6 +18155,12 @@ __webpack_require__.r(__webpack_exports__);
     PollListing: _Shared_PollListing__WEBPACK_IMPORTED_MODULE_1__.default,
     PageTitle: _Shared_PageTitle__WEBPACK_IMPORTED_MODULE_2__.default,
     PrimaryButton: _Shared_PrimaryButton__WEBPACK_IMPORTED_MODULE_3__.default
+  },
+  props: {
+    polls: {
+      type: Object,
+      required: true
+    }
   }
 });
 
@@ -18318,11 +18324,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    member: {
-      type: String,
-      required: true
-    },
-    memberUrl: {
+    author: {
       type: String,
       required: true
     },
@@ -18495,7 +18497,15 @@ __webpack_require__.r(__webpack_exports__);
     RoundedImage: _Shared_RoundedImage__WEBPACK_IMPORTED_MODULE_3__.default
   },
   props: {
+    author: {
+      type: String,
+      required: true
+    },
     category: {
+      type: String,
+      required: true
+    },
+    categoryColor: {
       type: String,
       required: true
     },
@@ -18507,15 +18517,7 @@ __webpack_require__.r(__webpack_exports__);
       type: Number,
       required: true
     },
-    href: {
-      type: String,
-      required: true
-    },
-    member: {
-      type: String,
-      required: true
-    },
-    memberUrl: {
+    slug: {
       type: String,
       required: true
     },
@@ -19931,20 +19933,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ol", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_poll_listing, {
-    title: "What is your favorite color?",
-    href: _ctx.route('polls.show'),
-    member: "Michael",
-    memberUrl: "/users/michael",
-    time: "01-01-2021",
-    timeForHumans: "6 months ago",
-    category: "Random",
-    votesCount: 24,
-    commentsCount: 10,
-    heartsCount: 55
-  }, null, 8
-  /* PROPS */
-  , ["href"])])])], 64
+  , ["href"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ol", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.polls.data, function (poll) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_poll_listing, {
+      key: poll.id,
+      slug: poll.slug,
+      title: poll.title,
+      time: poll.time,
+      timeForHumans: poll.timeForHumans,
+      author: poll.author,
+      category: poll.category,
+      categoryColor: poll.categoryColor,
+      votesCount: poll.votesCount,
+      commentsCount: poll.commentsCount,
+      heartsCount: poll.heartsCount
+    }, null, 8
+    /* PROPS */
+    , ["slug", "title", "time", "timeForHumans", "author", "category", "categoryColor", "votesCount", "commentsCount", "heartsCount"]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])])], 64
   /* STABLE_FRAGMENT */
   );
 }
@@ -20573,19 +20580,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("p", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
     "class": "hover:text-gray-600 hover:underline",
-    href: $props.memberUrl
+    href: ""
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.member), 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.author), 1
       /* TEXT */
       )];
     }),
     _: 1
     /* STABLE */
 
-  }, 8
-  /* PROPS */
-  , ["href"]), _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("time", {
+  }), _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("time", {
     title: $props.time
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.timeForHumans), 9
   /* TEXT, PROPS */
@@ -21022,13 +21027,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_panel, {
     element: "li",
-    "class": "hover:bg-gray-50 transition cursor-pointer",
+    "class": "mt-6 hover:bg-gray-50 transition cursor-pointer",
     onClick: $options.goToPoll
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_rounded_image)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
         "class": "text-lg font-medium text-indigo-600 hover:text-indigo-700 hover:underline",
-        href: $props.href
+        href: _ctx.route('polls.show', $props.slug)
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.title), 1
@@ -21042,14 +21047,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_byline, {
         "class": "mt-2",
-        member: $props.member,
-        "member-url": $props.memberUrl,
+        author: $props.author,
         time: $props.time,
         "time-for-humans": $props.timeForHumans
       }, null, 8
       /* PROPS */
-      , ["member", "member-url", "time", "time-for-humans"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("dl", null, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("dd", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_badge, {
-        color: "indigo"
+      , ["author", "time", "time-for-humans"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("dl", null, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("dd", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_badge, {
+        color: $props.categoryColor
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.category), 1
@@ -21059,7 +21063,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("dl", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("dd", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.votesCount), 1
+      }, 8
+      /* PROPS */
+      , ["color"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("dl", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("dd", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.votesCount), 1
       /* TEXT */
       )]), _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("dd", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.commentsCount), 1
       /* TEXT */

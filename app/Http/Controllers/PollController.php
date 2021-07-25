@@ -15,7 +15,25 @@ class PollController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Polls/Index');
+        return Inertia::render('Polls/Index', [
+            'polls' => Poll::latest()
+                ->with(['author', 'category'])
+                ->withCount(['comments', 'votes', 'hearts'])
+                ->simplePaginate()
+                ->through(fn ($poll) => [
+                    'id' => $poll->id,
+                    'slug' => $poll->slug,
+                    'title' => $poll->title,
+                    'time' => $poll->created_at->toDayDateTimeString(),
+                    'timeForHumans' => $poll->created_at->diffForHumans(),
+                    'author' => $poll->author->name,
+                    'category' => $poll->category->name,
+                    'categoryColor' => $poll->category->color,
+                    'votesCount' => $poll->votes_count,
+                    'commentsCount' => $poll->comments_count,
+                    'heartsCount' => $poll->hearts_count,
+                ]),
+        ]);
     }
 
     /**
