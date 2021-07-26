@@ -68,19 +68,23 @@
                           :heartsCount="poll.heartsCount" />
         </ol>
     </section>
+
+    <pagination class="mt-6" :next-page-url="polls.next_page_url" :prev-page-url="polls.prev_page_url" />
 </template>
 
 <script>
+    import PageTitle from '@/Shared/PageTitle'
+    import Pagination from '@/Shared/Pagination'
     import PollFilter from '@/Shared/PollFilter'
     import PollListing from '@/Shared/PollListing'
-    import PageTitle from '@/Shared/PageTitle'
     import PrimaryButton from '@/Shared/PrimaryButton'
 
     export default {
         components: {
+            PageTitle,
+            Pagination,
             PollFilter,
             PollListing,
-            PageTitle,
             PrimaryButton,
         },
 

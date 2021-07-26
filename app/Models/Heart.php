@@ -20,7 +20,7 @@ class Heart extends Model
     /**
      * Get the user who sent this heart.
      */
-    public function lover()
+    public function hearter()
     {
         return $this->belongsTo(User::class, 'user_id');
     }

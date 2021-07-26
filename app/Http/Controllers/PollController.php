@@ -65,7 +65,44 @@ class PollController extends Controller
      */
     public function show(Poll $poll)
     {
-        return Inertia::render('Polls/Show');
+        return Inertia::render('Polls/Show', [
+            'slug' => $poll->slug,
+            'title' => $poll->title,
+            'time' => $poll->created_at->toDayDateTimeString(),
+            'timeForHumans' => $poll->created_at->diffForHumans(),
+            'author' => $poll->author->name,
+            'category' => $poll->category->name,
+            'categoryColor' => $poll->category->color,
+            'votes' => $poll->votes,
+            'comments' => $poll->comments()
+                ->with(['author', 'hearts'])
+                ->withCount(['replies'])
+                ->get()
+                ->map(fn ($comment) => [
+                    'id' => $comment->id,
+                    'body' => $comment->body,
+                    'author' => $comment->author->name,
+                    'time' => $comment->created_at->toDayDateTimeString(),
+                    'timeForHumans' => $comment->created_at->diffForHumans(),
+                    'repliesCount' => $comment->replies_count,
+                        'hearts' => $comment->hearts()
+                            ->with(['hearter'])
+                            ->get()
+                            ->map(fn ($heart) => [
+                                'hearter' => $heart->hearter->name,
+                                'time' => $heart->created_at->toDayDateTimeString(),
+                                'timeForHumans' => $heart->created_at->diffForHumans(),
+                            ]),
+                ]),
+            'hearts' => $poll->hearts()
+                ->with(['hearter'])
+                ->get()
+                ->map(fn ($heart) => [
+                    'hearter' => $heart->hearter->name,
+                    'time' => $heart->created_at->toDayDateTimeString(),
+                    'timeForHumans' => $heart->created_at->diffForHumans(),
+                ]),
+        ]);
     }
 
     /**
